@@ -20,8 +20,14 @@ body {
 span {
     font-weight: 900;
     font-size: 30px;
-    margin-right: 200px;
+    text-align: left;
+    margin-right: 100px;
     text-decoration: underline;
+}
+
+#instructions {
+    margin-right: 10px;
+    display: inline;
 }
 
 .btn {
@@ -34,6 +40,7 @@ span {
     border-radius: 5px;
     cursor: pointer;
     margin: 0 5px;
+    background-color: #f0eee1d3;
 }
 
 .btn:active {
@@ -47,10 +54,7 @@ span {
     margin-top: 30px;
     box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.199);
     border-radius: 3px;
-}
-
-#container div {
-    border: 1px solid rgba(0, 0, 0, 0.158);
+    padding: 2px;
 }
 
 .hovered {
