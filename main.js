@@ -81,8 +81,6 @@ grayscaleBtn.addEventListener('click', () => {
         node.style.backgroundColor = "black";
         node.style.opacity = "0.0";
         node.addEventListener('mouseover', (e) => {
-            // node.style.backgroundColor = "black";
-            // node.style.opacity = "0.0";
             let currentOpacity = e.target.style.opacity;
             node.style.opacity = Number(currentOpacity) + 0.1;
         })
