@@ -11,22 +11,59 @@ Goal_1: create a 16x16 grid with divs using JS only.
 Goal_2: hover effect to change color of cells
     i. add a mouseover eventlistener which changes cell.css.background-color to black.
     ii. then remove the event listener in the end so that color isn't changed on every mouse over. So, I just ended up using conditionals to prevent unessecary execution because it was simpler this way.
+
+Goal_3: reset grid size button
+    i. Add an event listenr to button#reset which trigger a function.
+    ii. That function should: 
+        a. Remove 'hovered' class from all cells.
+            - queryselect all the cells into an array.
+            - then forEach classList.remove should work.
+        b. prompt user for row size eg. 16.
+        c. square that row size and store it in the gridTotalCells variable.
+        d. then make the grid again.
+    - I didn't recalculate gridTotalSize when reset button was clicked, that led to only 256 divs being created, but it's fixed now. 
 */
 
 const container = document.getElementById('container');
+const resetBtn = document.getElementById('reset');
+const clearGridBtn = document.getElementById('clear')
+let sideSize = 16;
+let gridTotalCells = sideSize**2;
 
-// Display 16 x 16 grid:
-for (let i = 0; i <= 256; i++) {
-    let newDivCell = document.createElement('div');
-    newDivCell.setAttribute('id', `${i}`);
-    container.appendChild(newDivCell);
-    // add hovered class if not added already, which changes bgc to black:
-    newDivCell.addEventListener("mouseover", (e) => {
-        if ((e.target.classList)[0] == 'hovered') {
-            return;
-        } else {
-            newDivCell.classList.add("hovered");
-        }
-    })
+function makeGrid() {
+    for (let i = 0; i <= gridTotalCells; i++) {
+        let newDivCell = document.createElement('div');
+        newDivCell.setAttribute('id', `${i}`);
+        container.appendChild(newDivCell);
+        newDivCell.addEventListener("mouseover", (e) => {
+            // to prevent needless adding hovered:
+            if ((e.target.classList)[0] == 'hovered') {
+                return;
+            } else {
+                newDivCell.classList.add("hovered");
+            }
+        })
+    }
+    container.style.cssText = `display: grid; grid-template-columns: repeat(${sideSize}, 1fr); grid-template-rows: repeat(${sideSize}, 1fr);`;
 }
-container.style.cssText = "display: grid; grid-template-columns: repeat(16, 1fr); grid-template-rows: repeat(16, 1fr);";
+
+makeGrid();
+
+resetBtn.addEventListener('click', () => {
+    container.innerHTML = "";
+    sideSize = prompt("What size do you want it to be?");
+    gridTotalCells = sideSize**2;
+    makeGrid();
+})
+
+clearGridBtn.addEventListener('click', () => {
+    let cellDivsArr = document.querySelectorAll('#container > div')
+    cellDivsArr.forEach((node) => {
+        node.classList.remove('hovered');
+    })
+})
+
+
+
+
+
