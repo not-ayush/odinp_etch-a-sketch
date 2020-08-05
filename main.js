@@ -1,29 +1,3 @@
-/* 
-Goal_1: create a 16x16 grid with divs using JS only.
-    i. Let's try looping through a createElement 16x16 = 216 times to create 216 divs,
-    these divs will be block by default ie they'll be added below each other.
-    ii. TO make a grid with them I'll do:
-        a. container display grid
-        b. grid template-coloumn repaet(16, 1fr)
-        c. grid template-row repaet(16, 1fr)
-        This will be done by div.cssText.
-
-Goal_2: hover effect to change color of cells
-    i. add a mouseover eventlistener which changes cell.css.background-color to black.
-    ii. then remove the event listener in the end so that color isn't changed on every mouse over. So, I just ended up using conditionals to prevent unessecary execution because it was simpler this way.
-
-Goal_3: reset grid size button
-    i. Add an event listenr to button#reset which trigger a function.
-    ii. That function should: 
-        a. Remove 'hovered' class from all cells.
-            - queryselect all the cells into an array.
-            - then forEach classList.remove should work.
-        b. prompt user for row size eg. 16.
-        c. square that row size and store it in the gridTotalCells variable.
-        d. then make the grid again.
-    - I didn't recalculate gridTotalSize when reset button was clicked, that led to only 256 divs being created, but it's fixed now. 
-*/
-
 const container = document.getElementById('container');
 const resetBtn = document.getElementById('reset');
 const clearGridBtn = document.getElementById('clear')
@@ -63,7 +37,30 @@ clearGridBtn.addEventListener('click', () => {
     })
 })
 
+// My "plan":
+/* Goal_1: create a 16x16 grid with divs using JS only.
+    i. Let's try looping through a createElement 16x16 = 216 times to create 216 divs,
+    these divs will be block by default ie they'll be added below each other.
+    ii. TO make a grid with them I'll do:
+        a. container display grid
+        b. grid template-coloumn repaet(16, 1fr)
+        c. grid template-row repaet(16, 1fr)
+        This will be done by div.cssText.
 
+Goal_2: hover effect to change color of cells
+    i. add a mouseover eventlistener which changes cell.css.background-color to black.
+    ii. then remove the event listener in the end so that color isn't changed on every mouse over. So, I just ended up using conditionals to prevent unessecary execution because it was simpler this way.
+
+Goal_3: reset grid size button
+    i. Add an event listenr to button#reset which trigger a function.
+    ii. That function should: 
+        a. Remove 'hovered' class from all cells.
+            - queryselect all the cells into an array.
+            - then forEach classList.remove should work.
+        b. prompt user for row size eg. 16.
+        c. square that row size and store it in the gridTotalCells variable.
+        d. then make the grid again.
+    - I didn't recalculate gridTotalSize when reset button was clicked, that led to only 256 divs being created, but it's fixed now.  */
 
 
 
