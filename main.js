@@ -27,9 +27,9 @@ function makeGrid() {
             else newDivCell.style.backgroundColor = "black";
         })
     }
-    container.style.cssText = `display: grid; grid-template-columns: repeat(${sideSize}, 1fr); grid-template-rows: repeat(${sideSize}, 1fr);`;
+    container.style.cssText = `display: grid; grid-template-columns: repeat(${sideSize}, 
+        1fr); grid-template-rows: repeat(${sideSize}, 1fr);`;
 }
-
 makeGrid();
 
 resetBtn.addEventListener('click', () => {
@@ -103,7 +103,8 @@ grayscaleBtn.addEventListener('click', () => {
 
 Goal_2: hover effect to change color of cells
     i. add a mouseover eventlistener which changes cell.css.background-color to black.
-    ii. then remove the event listener in the end so that color isn't changed on every mouse over. So, I just ended up using conditionals to prevent unessecary execution because it was simpler this way.
+    ii. then remove the event listener in the end so that color isn't changed on every mouse over. 
+    So, I just ended up using conditionals to prevent unessecary execution because it was simpler this way.
 
 Goal_3: reset grid size button
     i. Add an event listenr to button#reset which trigger a function.
@@ -114,4 +115,5 @@ Goal_3: reset grid size button
         b. prompt user for row size eg. 16.
         c. square that row size and store it in the gridTotalCells variable.
         d. then make the grid again.
-    - I didn't recalculate gridTotalSize when reset button was clicked, that led to only 256 divs being created, but it's fixed now.  */
+    - I didn't recalculate gridTotalSize when reset button was clicked, 
+    that led to only 256 divs being created, but it's fixed now.  */
