@@ -9,82 +9,82 @@ let sideSize = 16;
 let gridTotalCells = sideSize ** 2;
 
 function clearGrid() {
-    let cellDivsArr = document.querySelectorAll('#container div')
-    cellDivsArr.forEach((node) => {
-        node.style.backgroundColor = "rgb(0,0,0,0)";
-        node.style.opacity = "1";
-        node.style = "";
-    })
+  let cellDivsArr = document.querySelectorAll('#container div')
+  cellDivsArr.forEach((node) => {
+    node.style.backgroundColor = "rgb(0,0,0,0)";
+    node.style.opacity = "1";
+    node.style = "";
+  })
 }
 
 function makeGrid() {
-    for (let i = 0; i <= gridTotalCells; i++) {
-        let newDivCell = document.createElement('div');
-        newDivCell.setAttribute('id', `${i}`);
-        container.appendChild(newDivCell);
-        newDivCell.addEventListener("mouseover", (e) => {
-            if (newDivCell.style.backgroundColor == "black") return;
-            else newDivCell.style.backgroundColor = "black";
-        })
-    }
-    container.style.cssText = `display: grid; grid-template-columns: repeat(${sideSize}, 
+  for (let i = 0; i <= gridTotalCells; i++) {
+    let newDivCell = document.createElement('div');
+    newDivCell.setAttribute('id', `${i}`);
+    container.appendChild(newDivCell);
+    newDivCell.addEventListener("mouseover", (e) => {
+      if (newDivCell.style.backgroundColor == "black") return;
+      else newDivCell.style.backgroundColor = "black";
+    })
+  }
+  container.style.cssText = `display: grid; grid-template-columns: repeat(${sideSize}, 
         1fr); grid-template-rows: repeat(${sideSize}, 1fr);`;
 }
 makeGrid();
 
 resetBtn.addEventListener('click', () => {
-    container.innerHTML = "";
-    sideSize = prompt("What size do you want it to be?");
-    if (sideSize > 150) {
-        sideSize = prompt("It will take forever, enter something lower than 150!");
-    } else if (isNaN(sideSize)) sideSize = 16;
-    gridTotalCells = sideSize ** 2;
-    makeGrid();
+  container.innerHTML = "";
+  sideSize = prompt("What size do you want it to be?");
+  if (sideSize > 150) {
+    sideSize = prompt("It will take forever, enter something lower than 150!");
+  } else if (isNaN(sideSize)) sideSize = 16;
+  gridTotalCells = sideSize ** 2;
+  makeGrid();
 })
 
 clearGridBtn.addEventListener('click', () => {
-    clearGrid();
+  clearGrid();
 })
 
 defaultBtn.addEventListener('click', () => {
-    container.innerHTML = "";
-    makeGrid();
-    let cellDivsArr = document.querySelectorAll('#container > div')
-    cellDivsArr.forEach((node) => {
-        node.addEventListener('mouseover', () => {
-            if (node.style.backgroundColor == "black") {
-                return;
-            } else node.style.backgroundColor = "black";
-        })
+  container.innerHTML = "";
+  makeGrid();
+  let cellDivsArr = document.querySelectorAll('#container > div')
+  cellDivsArr.forEach((node) => {
+    node.addEventListener('mouseover', () => {
+      if (node.style.backgroundColor == "black") {
+        return;
+      } else node.style.backgroundColor = "black";
     })
+  })
 })
 
 randomClrBtn.addEventListener('click', () => {
-    container.innerHTML = "";
-    makeGrid();
-    let cellDivsArr = document.querySelectorAll('#container > div')
-    cellDivsArr.forEach((node) => {
-        node.addEventListener('mouseover', () => {
-            let r = Math.floor(Math.random() * 255);
-            let g = Math.floor(Math.random() * 255);
-            let b = Math.floor(Math.random() * 255);
-            node.style.backgroundColor = `rgb(${r},${g},${b})`;
-        })
+  container.innerHTML = "";
+  makeGrid();
+  let cellDivsArr = document.querySelectorAll('#container > div')
+  cellDivsArr.forEach((node) => {
+    node.addEventListener('mouseover', () => {
+      let r = Math.floor(Math.random() * 255);
+      let g = Math.floor(Math.random() * 255);
+      let b = Math.floor(Math.random() * 255);
+      node.style.backgroundColor = `rgb(${r},${g},${b})`;
     })
+  })
 })
 
 grayscaleBtn.addEventListener('click', () => {
-    container.innerHTML = "";
-    makeGrid();
-    let cellDivsArr = document.querySelectorAll('#container > div');
-    cellDivsArr.forEach((node) => {
-        node.style.backgroundColor = "black";
-        node.style.opacity = "0.0";
-        node.addEventListener('mouseover', (e) => {
-            let currentOpacity = e.target.style.opacity;
-            node.style.opacity = Number(currentOpacity) + 0.1;
-        })
+  container.innerHTML = "";
+  makeGrid();
+  let cellDivsArr = document.querySelectorAll('#container > div');
+  cellDivsArr.forEach((node) => {
+    node.style.backgroundColor = "black";
+    node.style.opacity = "0.0";
+    node.addEventListener('mouseover', (e) => {
+      let currentOpacity = e.target.style.opacity;
+      node.style.opacity = Number(currentOpacity) + 0.1;
     })
+  })
 })
 
 
